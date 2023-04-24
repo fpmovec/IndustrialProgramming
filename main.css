@@ -61,6 +61,12 @@ h1 {
     padding: 0 30px;
 }
 
+.block {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300;
+}
+
 * {box-sizing: border-box;}
 body {font-family: Verdana, sans-serif;}
 .mySlides {display: none;}
@@ -117,7 +123,34 @@ input[type=submit]:hover {
   background-color: #f2f2f2;
   padding: 20px;
 }
+.regContainer {
+  width: 30%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.page {
+  height: 100vh;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
 
+.btn {
+  background-color: #5c76eb;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.btn:hover {
+  background-color: #7476ec;
+}
 .col-25 {
   float: left;
   width: 25%;
@@ -143,7 +176,10 @@ input[type=submit]:hover {
   position: absolute;
   top: 0;
 }
+.box {
+  display: inline-block;
 
+}
 /* The dots/bullets/indicators */
 .dot {
   height: 15px;
