@@ -1,6 +1,6 @@
 @font-face {
     font-family: BadScript;
-    src: url(Bad_Script_Regular.ttf);
+    src: url(fonts/Bad_Script_Regular.ttf);
 }
 
 ul {
@@ -30,9 +30,23 @@ li a:hover {
 
 h1 {
     text-align: center;
-    font-family: BadScript, 'Comic Sans MS', system-ui;
+    /*font-family: BadScript, 'Comic Sans MS', system-ui;*/
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.group {
+  display: inline-block;
+}
+
+.descriptionTitle {
+  text-align: left;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 35px;
+}
+.description {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
 .page-wrapper {
     display: flex;
     justify-content: space-between;
