@@ -16,10 +16,6 @@ class Handler {
         this.tickets = obj.slice()
     }
 
-    hello() {
-        console.log(this.tickets[0].id)
-    }
-
     getItems(skip = 0, top = 1, filterConfig = null) {
         let items = [];
         let j = 0;
@@ -90,7 +86,7 @@ console.log((hand.getItems(0, 1))[0].id);
 console.log(hand.getItemById(1).seat);
 console.log(hand.validateItem(hand.tickets[0]));
 console.log(hand.addItem(new Ticket({
-    id: 3,
+    id: "3",
     description: "I'm description",
     createdAt: new Date(),
     seat: 19,
@@ -102,4 +98,4 @@ console.log(hand.addItem(new Ticket({
 hand.removeItem('3');
     console.log(hand.tickets[0].id);
     console.log(hand.tickets[1].id);
-   console.log(hand.tickets[2].id);
+   //console.log(hand.tickets[2].id);
