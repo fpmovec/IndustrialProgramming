@@ -19,6 +19,7 @@ class Handler {
     getItems(skip = 0, top = 1, filterConfig = null) {
         let items = [];
         let j = 0;
+        let k = 0;
         for (let i = skip + 1; i < skip + top + 1; i++) {
             if (filterConfig == null) {
                 items[i - skip - 1] = this.tickets[i];
@@ -56,8 +57,38 @@ class Handler {
         return true;
     }
 
+    addItems(objects) {
+        for (let i = 0; i < objects.length; i++){
+         if (!this.validateItem(objects[i]))
+           return false;
+         this.tickets.push(objects[i]);
+        }
+        return true;
+
+    }
+
+    editItem(id, obj) {
+        let item = this.getItemById(id);
+        if (obj.description != null)
+            item.description = obj.description;
+        if (obj.createdAt != null)
+            item.createdAt = obj.createdAt;
+        if (obj.seat != null)
+            item.seat = obj.seat;
+        if (obj.departureDate != null)
+            item.departureDate = obj.departureDate;
+        if (obj.arrivalDate != null)
+            item.arrivalDate = obj.arrivalDate;
+        if (obj.description != null)
+            item.departurePlace = obj.departurePlace;
+        if (obj.description != null)
+            item.arrivalPlace = obj.arrivalPlace;
+
+        this.tickets[id - 1] = item;
+    }
+
     removeItem(id) {
-      this.tickets.splice(id - 1, 1);
+        this.tickets.splice(id - 1, 1);
     }
 }
 
@@ -95,7 +126,32 @@ console.log(hand.addItem(new Ticket({
     departurePlace: "Moscow",
     arrivalPlace: "Praha"
 })));
-hand.removeItem('3');
-    console.log(hand.tickets[0].id);
-    console.log(hand.tickets[1].id);
-   //console.log(hand.tickets[2].id);
+//hand.removeItem('3');
+console.log(hand.tickets[0].id);
+console.log(hand.tickets[1].id);
+hand.editItem(1, { seat: 34 });
+console.log(hand.tickets[0].seat);
+//console.log(hand.tickets[2].id);
+console.log(hand.addItems([
+    new Ticket({
+        id: "4",
+        description: "I'm description 4",
+        createdAt: new Date(),
+        seat: 27,
+        departureDate: new Date(2023, 1, 21),
+        arrivalDate: new Date(2023, 1, 22),
+        departurePlace: "Minsk",
+        arrivalPlace: "Zurich"
+    }), new Ticket({
+        id: "5",
+        description: "I'm description 5",
+        createdAt: new Date(),
+        seat: 54,
+        departureDate: new Date(2023, 11, 9),
+        arrivalDate: new Date(2023, 11, 10),
+        departurePlace: "Minsk",
+        arrivalPlace: "London"
+    })
+]))
+console.log(hand.tickets[3].id);
+console.log(hand.tickets[4].id);
