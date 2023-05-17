@@ -11,9 +11,9 @@ ul {
     background-color: #333;
 }
 
-li {
+/*li {
     float: left;
-}
+}*/
 
 li a {
     display: block;
@@ -21,10 +21,21 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    float: left;
 }
 
 li a:hover {
     background-color: #111;
+}
+
+li nav-right
+{
+  display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
 }
 
 
@@ -119,6 +130,11 @@ input[type=submit]:hover {
 }
 
 .container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.container1 {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;

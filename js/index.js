@@ -20,14 +20,23 @@ class Handler {
         let items = [];
         let j = 0;
         let k = 0;
-        for (let i = skip + 1; i < skip + top + 1; i++) {
+        for (let i = skip; i < skip + top; i++) {
             if (filterConfig == null) {
-                items[i - skip - 1] = this.tickets[i];
+                items[i - skip] = this.tickets[i];
             }
             else {
 
             }
         }
+        items.sort(function (a, b) {
+            if (a.departureDate > b.departureDate) {
+                return 1;
+            }
+            if (a.departureDate < b.departureDate) {
+                return -1;
+            }
+            return 0;
+        })
         return items;
     }
 
@@ -58,10 +67,10 @@ class Handler {
     }
 
     addItems(objects) {
-        for (let i = 0; i < objects.length; i++){
-         if (!this.validateItem(objects[i]))
-           return false;
-         this.tickets.push(objects[i]);
+        for (let i = 0; i < objects.length; i++) {
+            if (!this.validateItem(objects[i]))
+                return false;
+            this.tickets.push(objects[i]);
         }
         return true;
 
@@ -92,6 +101,18 @@ class Handler {
     }
 }
 
+Ticket.prototype.toString = function ticketToString(){
+    return `id: ${this.id}
+    description: ${this.description}
+    created at ${this.createdAt}
+    seat: ${this.seat}
+    departure date: ${this.departureDate}
+    arrival date: ${this.arrivalDate}
+    departure place: ${this.departurePlace}
+    arrival place: ${this.arrivalPlace}
+    -----------------------------------`
+}
+
 const hand = new Handler([new Ticket({
     id: "1",
     description: "I'm description",
@@ -112,9 +133,10 @@ const hand = new Handler([new Ticket({
     arrivalPlace: "Saint Petersburg"
 })])
 
+
 //hand.hello();
-console.log((hand.getItems(0, 1))[0].id);
-console.log(hand.getItemById(1).seat);
+console.log((hand.getItems(0, 2))[0].toString());
+console.log(hand.getItemById(1).toString());
 console.log(hand.validateItem(hand.tickets[0]));
 console.log(hand.addItem(new Ticket({
     id: "3",
@@ -127,10 +149,10 @@ console.log(hand.addItem(new Ticket({
     arrivalPlace: "Praha"
 })));
 //hand.removeItem('3');
-console.log(hand.tickets[0].id);
-console.log(hand.tickets[1].id);
+//console.log(hand.tickets[0].toString());
+//console.log(hand.tickets[1].toString());
 hand.editItem(1, { seat: 34 });
-console.log(hand.tickets[0].seat);
+console.log(hand.tickets[0].toString());
 //console.log(hand.tickets[2].id);
 console.log(hand.addItems([
     new Ticket({
@@ -153,5 +175,5 @@ console.log(hand.addItems([
         arrivalPlace: "London"
     })
 ]))
-console.log(hand.tickets[3].id);
-console.log(hand.tickets[4].id);
+console.log(hand.tickets[3].toString());
+console.log(hand.tickets[4].toString());
